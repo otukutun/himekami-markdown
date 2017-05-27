@@ -1,7 +1,5 @@
-require "himekami/markdown/version"
+require "html/pipeline"
+require "nokogiri"
 
-module Himekami
-  module Markdown
-    # Your code goes here...
-  end
-end
+require "himekami/markdown/version"
+require "himekami/markdown/processor"
