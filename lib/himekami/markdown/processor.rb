@@ -10,6 +10,8 @@ module Himekami
 
         def default_filters
           [
+            HTML::Pipeline::MarkdownFilter,
+            HTML::Pipeline::SyntaxHighlightFilter
           ]
         end
       end
