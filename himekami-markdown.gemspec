@@ -37,4 +37,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "html-pipeline", "~> 2.6"
   spec.add_development_dependency "commonmarker", "~> 0.14"
   spec.add_development_dependency 'github-linguist', '~> 5.0', '>= 5.0.11'
+  spec.add_development_dependency "pry"
 end
