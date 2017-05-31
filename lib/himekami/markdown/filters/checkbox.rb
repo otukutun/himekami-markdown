@@ -4,9 +4,7 @@ module Himekami
       class Checkbox < HTML::Pipeline::Filter
         def call
           doc.search("li").each do |li|
-
-            list = List.new(li) if List.has_checkbox?(li)
-            list.convert!
+          List.new(li).convert! if List.has_checkbox?(li)
           end
           doc
         end
