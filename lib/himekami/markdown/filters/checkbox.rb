@@ -4,7 +4,10 @@ module Himekami
       class Checkbox < HTML::Pipeline::Filter
         def call
           doc.search("li").each do |li|
-          List.new(li).convert! if List.has_checkbox?(li)
+            if List.has_checkbox?(li)
+              li = List.new(li)
+              li.convert!
+            end
           end
           doc
         end
@@ -32,24 +35,31 @@ module Himekami
 
           def convert!
             add_css_class
+            text_node
             add_checkbox_html
           end
 
           private
+
+          def text_node
+            return @node.children.find { |node| node.name == 'p' }.children.first if @node.children.any? { |node| node.name == 'p' }
+            
+            @node.children.first
+          end
 
           def add_css_class
             @node['class'] = LI_ATTR_CLASS if @node['class'].nil? || !@node['class'].include?(LI_ATTR_CLASS)
           end
 
           def remove_md
-            @node.children.first.content = @node.children.first.content.sub(CHECKBOX_PATTERN, '').strip
+            text_node.content = text_node.content.sub(CHECKBOX_PATTERN, '').strip
           end
 
           def add_checkbox_html
             html = open_checkbox? ? render_open_checkbox_html : render_closed_checkbox_html
 
             remove_md
-            @node.children.first.add_previous_sibling(html)
+            text_node.add_previous_sibling(html)
           end
 
           def render_open_checkbox_html
@@ -61,7 +71,7 @@ module Himekami
           end
 
           def open_checkbox?
-            @node.children.first.content.include?(CHECKBOX_OPEN)
+            text_node.content.include?(CHECKBOX_OPEN)
           end
         end
       end

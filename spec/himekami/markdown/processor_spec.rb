@@ -63,6 +63,60 @@ RSpec.describe Himekami::Markdown::Processor do
         end
     end
 
+    context 'with complex list' do
+      let(:markdown) do
+      <<-EOS.strip_heredoc
+      # 今日の日記
+
+
+      - [x] デザインをマスターする
+      - [x] CSSをマスターする
+      - [ ] Rails newする
+        - [ ] aaa
+           - [ ] aaaa
+        - [ ] aaa
+
+      - test
+        - aaaa
+
+      今日も一日がんばるぞい
+      EOS
+    end
+
+    it 'will convert to list' do
+      should eq <<-EOS.strip_heredoc.chomp
+      <h1>今日の日記</h1>
+      <ul>
+      <li class="task-list-item">
+      <p><input type="checkbox" class="task-list-item-checkbox" checked>デザインをマスターする</p>
+      </li>
+      <li class="task-list-item">
+      <p><input type="checkbox" class="task-list-item-checkbox" checked>CSSをマスターする</p>
+      </li>
+      <li class="task-list-item">
+      <p><input type="checkbox" class="task-list-item-checkbox">Rails newする</p>
+      <ul>
+      <li class="task-list-item">
+      <input type="checkbox" class="task-list-item-checkbox">aaa<ul>
+      <li class="task-list-item">
+      <input type="checkbox" class="task-list-item-checkbox">aaaa</li>
+      </ul>
+      </li>
+      <li class="task-list-item">
+      <input type="checkbox" class="task-list-item-checkbox">aaa</li>
+      </ul>
+      </li>
+      <li>
+      <p>test</p>
+      <ul>
+      <li>aaaa</li>
+      </ul>
+      </li>
+      </ul>
+      <p>今日も一日がんばるぞい</p>
+      EOS
+    end
+    end
 
     context 'with list syntax' do
       let(:markdown) do
