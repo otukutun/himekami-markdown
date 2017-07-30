@@ -8,6 +8,8 @@ jobs:
     docker:
       # specify the version you desire here
        - image: ruby:2.4.1
+    environment:
+      BUNDLE_DIR: vendor/bundle
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -32,7 +34,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+            bundle check --path=$BUNDLE_DIR || bundle install --path=$BUNDLE_DIR --jobs=4 --retry=3 
 
       - save_cache:
           paths:
