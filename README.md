@@ -1,4 +1,4 @@
-# Custamable Markdown Parser with html-pipeline [![Gem Version](https://badge.fury.io/rb/himekami-markdown.svg)](https://badge.fury.io/rb/himekami-markdown)
+# Custamable Markdown Parser with html-pipeline [![Gem Version](https://badge.fury.io/rb/himekami-markdown.svg)](https://badge.fury.io/rb/himekami-markdown) [![CircleCI](https://circleci.com/gh/otukutun/himekami-markdown/tree/master.svg?style=svg)](https://circleci.com/gh/otukutun/himekami-markdown/tree/master)
 
 ## Installation
 
