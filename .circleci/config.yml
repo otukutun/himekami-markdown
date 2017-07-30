@@ -34,7 +34,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            bundle check --path=$BUNDLE_DIR || bundle install --path=$BUNDLE_DIR --jobs=4 --retry=3 
+            bundle install --path=$BUNDLE_DIR --jobs=4 --retry=3 
 
       - save_cache:
           paths:
