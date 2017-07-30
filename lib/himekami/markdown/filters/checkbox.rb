@@ -16,16 +16,14 @@ module Himekami
           LI_ATTR_CLASS = 'task-list-item'.freeze
           CHECKBOX_ATTR_CLASS = 'task-list-item-checkbox'.freeze
 
-          CHECKBOX_OPEN = "[ ]".freeze
-          CHECKBOX_CLOSED = "[x]".freeze
+          CHECKBOX_OPEN = "[ ] ".freeze
+          CHECKBOX_CLOSED = "[x] ".freeze
 
-          CHECKBOX_OPEN_PATTERN = /\[ \]/
-          CHECKBOX_CLOSED_PATTERN = /\[x\]/
-          CHECKBOX_PATTERN = /(#{CHECKBOX_OPEN_PATTERN}|#{CHECKBOX_CLOSED_PATTERN})/
+          CHECKBOX_PATTERN = /(\[ \]|\[x\])\s+/
 
           class << self
             def has_checkbox?(node)
-              node.text =~ CHECKBOX_PATTERN
+              node.text.start_with?(CHECKBOX_OPEN, CHECKBOX_CLOSED)
             end
           end
 
@@ -71,7 +69,7 @@ module Himekami
           end
 
           def open_checkbox?
-            text_node.content.include?(CHECKBOX_OPEN)
+            text_node.content.start_with?(CHECKBOX_OPEN)
           end
         end
       end

@@ -75,7 +75,8 @@ RSpec.describe Himekami::Markdown::Processor do
         - [ ] aaa
            - [ ] aaaa
         - [ ] aaa
-
+        - hogehoge
+          - [ ] aaa
       - test
         - aaaa
 
@@ -88,14 +89,11 @@ RSpec.describe Himekami::Markdown::Processor do
       <h1>今日の日記</h1>
       <ul>
       <li class="task-list-item">
-      <p><input type="checkbox" class="task-list-item-checkbox" checked>デザインをマスターする</p>
-      </li>
+      <input type="checkbox" class="task-list-item-checkbox" checked>デザインをマスターする</li>
       <li class="task-list-item">
-      <p><input type="checkbox" class="task-list-item-checkbox" checked>CSSをマスターする</p>
-      </li>
+      <input type="checkbox" class="task-list-item-checkbox" checked>CSSをマスターする</li>
       <li class="task-list-item">
-      <p><input type="checkbox" class="task-list-item-checkbox">Rails newする</p>
-      <ul>
+      <input type="checkbox" class="task-list-item-checkbox">Rails newする<ul>
       <li class="task-list-item">
       <input type="checkbox" class="task-list-item-checkbox">aaa<ul>
       <li class="task-list-item">
@@ -104,10 +102,15 @@ RSpec.describe Himekami::Markdown::Processor do
       </li>
       <li class="task-list-item">
       <input type="checkbox" class="task-list-item-checkbox">aaa</li>
+      <li>hogehoge
+      <ul>
+      <li class="task-list-item">
+      <input type="checkbox" class="task-list-item-checkbox">aaa</li>
       </ul>
       </li>
-      <li>
-      <p>test</p>
+      </ul>
+      </li>
+      <li>test
       <ul>
       <li>aaaa</li>
       </ul>
