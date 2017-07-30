@@ -1,0 +1,41 @@
+version: 2
+jobs:
+  build:
+    docker:      
+      - image: ruby:2.4.1
+    environment:
+      BUNDLE_DIR: vendor/bundle
+    
+    working_directory: src
+
+    steps:
+      - checkout
+
+      - run:
+          name: Check Runtime Information
+          command: |
+            cat << EOF
+            bundler        : `bundle -v`
+            EOF
+
+      - restore_cache:
+          name: "[Ruby] Restore Cache"
+          keys:
+            - gems-{{ checksum "himekami-markdown.gemspec" }}
+            - gems-
+
+      - run: bundle check --path=$BUNDLE_DIR || bundle install --path=$BUNDLE_DIR --jobs=4 --retry=3 --without=production
+
+      - save_cache:
+          name: "[Ruby] Save Cache"
+          key: gems-{{ checksum "himekami-markdown.gemspec" }}
+          paths:
+            - vendor/bundle/
+
+       # Run rspec 
+      - type: shell
+        command: |
+          bundle exec rspec
+      # Save artifacts
+      - type: store_test_results
+        path: /tmp/test-results
