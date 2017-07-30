@@ -18,8 +18,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Install System Dependencies
-        command: apt-get update -qq && apt-get install -y build-essential libpq-dev libicu-dev cmake
+          name: Install System Dependencies
+          command: apt-get update -qq && apt-get install -y build-essential libpq-dev libicu-dev cmake
 
       # Download and cache dependencies
       - restore_cache:
