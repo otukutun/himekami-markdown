@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'activesupport', '~> 5.1'
   spec.add_dependency "html-pipeline", "~> 2.6"
   spec.add_dependency "commonmarker", "~> 0.14"
-  spec.add_dependency 'github-linguist', '~> 5.0'
+  spec.add_dependency 'github-linguist', '~> 5.2'
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency 'rspec_junit_formatter', '~> 0.3.0'
