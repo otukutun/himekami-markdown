@@ -19,9 +19,9 @@ RSpec.describe Himekami::Markdown::Processor do
         should eq <<-EOS.strip_heredoc.chomp
           <ul>
           <li class="task-list-item">
-          <input type="checkbox" class="task-list-item-checkbox" checked>今日のタスク</li>
+          <input type="checkbox" class="task-list-item-checkbox" checked disabled>今日のタスク</li>
           <li class="task-list-item">
-          <input type="checkbox" class="task-list-item-checkbox">明日のタスク</li>
+          <input type="checkbox" class="task-list-item-checkbox" disabled>明日のタスク</li>
           </ul>
         EOS
       end
@@ -43,19 +43,19 @@ RSpec.describe Himekami::Markdown::Processor do
           should eq <<-EOS.strip_heredoc.chomp
             <ul>
             <li class="task-list-item">
-            <input type="checkbox" class="task-list-item-checkbox" checked>今日のタスク<ul>
+            <input type="checkbox" class="task-list-item-checkbox" checked disabled>今日のタスク<ul>
             <li class="task-list-item">
-            <input type="checkbox" class="task-list-item-checkbox" checked>洗濯</li>
+            <input type="checkbox" class="task-list-item-checkbox" checked disabled>洗濯</li>
             <li class="task-list-item">
-            <input type="checkbox" class="task-list-item-checkbox" checked>掃除</li>
+            <input type="checkbox" class="task-list-item-checkbox" checked disabled>掃除</li>
             </ul>
             </li>
             <li class="task-list-item">
-            <input type="checkbox" class="task-list-item-checkbox">明日のタスク<ul>
+            <input type="checkbox" class="task-list-item-checkbox" disabled>明日のタスク<ul>
             <li class="task-list-item">
-            <input type="checkbox" class="task-list-item-checkbox" checked>ゴミ捨て</li>
+            <input type="checkbox" class="task-list-item-checkbox" checked disabled>ゴミ捨て</li>
             <li class="task-list-item">
-            <input type="checkbox" class="task-list-item-checkbox">買い物</li>
+            <input type="checkbox" class="task-list-item-checkbox" disabled>買い物</li>
             </ul>
             </li>
             </ul>
@@ -89,23 +89,23 @@ RSpec.describe Himekami::Markdown::Processor do
       <h1>今日の日記</h1>
       <ul>
       <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox" checked>デザインをマスターする</li>
+      <input type="checkbox" class="task-list-item-checkbox" checked disabled>デザインをマスターする</li>
       <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox" checked>CSSをマスターする</li>
+      <input type="checkbox" class="task-list-item-checkbox" checked disabled>CSSをマスターする</li>
       <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox">Rails newする<ul>
+      <input type="checkbox" class="task-list-item-checkbox" disabled>Rails newする<ul>
       <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox">aaa<ul>
+      <input type="checkbox" class="task-list-item-checkbox" disabled>aaa<ul>
       <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox">aaaa</li>
+      <input type="checkbox" class="task-list-item-checkbox" disabled>aaaa</li>
       </ul>
       </li>
       <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox">aaa</li>
+      <input type="checkbox" class="task-list-item-checkbox" disabled>aaa</li>
       <li>hogehoge
       <ul>
       <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox">aaa</li>
+      <input type="checkbox" class="task-list-item-checkbox" disabled>aaa</li>
       </ul>
       </li>
       </ul>

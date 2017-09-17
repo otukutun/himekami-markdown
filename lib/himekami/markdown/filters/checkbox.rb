@@ -61,11 +61,11 @@ module Himekami
           end
 
           def render_open_checkbox_html
-            '<input type="checkbox" class="task-list-item-checkbox" />'
+            '<input type="checkbox" class="task-list-item-checkbox" disabled="true"/>'
           end
 
           def render_closed_checkbox_html
-            '<input type="checkbox" class="task-list-item-checkbox" checked="true" />'
+            '<input type="checkbox" class="task-list-item-checkbox" checked="true" disabled="true"/>'
           end
 
           def open_checkbox?
